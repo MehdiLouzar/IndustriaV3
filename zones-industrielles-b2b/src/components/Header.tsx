@@ -6,6 +6,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
 import { Menu, Phone, MapPin, Building2 } from 'lucide-react';
+import AuthButton from '@/components/AuthButton';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -112,12 +113,9 @@ export default function Header() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {/* Contact Button */}
-            <div className="hidden md:flex items-center gap-3">
-              <Button className="header-red text-white hover:opacity-90">
-                <Phone className="w-4 h-4 mr-2" />
-                Contacter
-              </Button>
+            {/* Authentication section */}
+            <div className="hidden md:flex">
+              <AuthButton />
             </div>
 
             {/* Mobile menu */}
@@ -129,6 +127,11 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right">
                 <div className="space-y-4 py-4">
+                  {/* Mobile Auth */}
+                  <div className="pb-4 border-b">
+                    <AuthButton />
+                  </div>
+
                   {navItems.map((item, index) => (
                     <div key={index} className="space-y-2">
                       <h3 className="font-semibold text-gray-900">{item.title}</h3>
@@ -146,10 +149,6 @@ export default function Header() {
                       </div>
                     </div>
                   ))}
-                  <Button className="w-full header-red text-white">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Contacter
-                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
